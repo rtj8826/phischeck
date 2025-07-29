@@ -10,7 +10,7 @@ document.getElementById("check").addEventListener("click", function() {
         chrome.tabs.sendMessage(tabs[0].id, { action: "START_SCRAPING" });
         const url = tabs[0].url;
 
-        fetch("http://localhost:5000/predict", {
+        fetch("http://54.252.60.21:5000/predict", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url: url })

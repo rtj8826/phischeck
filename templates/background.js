@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         const urls = message.urls;
 
         urls.forEach(url => {
-            fetch("http://localhost:5000/predict", {
+            fetch("http://54.252.60.21:5000/predict", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
