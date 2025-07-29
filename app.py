@@ -7,14 +7,20 @@ CORS(app)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.get_json()
+    try :
+        data = request.get_json()
 
-    if not data or "url" not in data:
-        return jsonify({"error": "No URL provided"}), 400
+        if not data or "url" not in data:
+            return jsonify({"error": "No URL provided"}), 400
 
-    url = data["url"]
-    result = predict_url(url)
-    return jsonify(result)
+        url = data["url"]
+        result = predict_url(url)
+        return jsonify(result)
+    except Exception as error:
+        print("Prediction error:", error)
+        return jsonify({'error': str(error)}), 500
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
